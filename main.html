@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter-Strike 2 News</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1b2838;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIiB2aWV3Qm94PSIwIDAgMTkyMCAxMDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHJlY3Qgd2lkdGg9IjE5MjAiIGhlaWdodD0iMTA4MCIgZmlsbD0iYmxhY2siLz4KICAgIDxwYXRoIGQ9Ik0wIDE0MS44NTJDMjIxLjUyMiAxMTkuODAyIDMyMS43NjYgMTA5LjMyMiA0MzMuOTM4IDY3LjM3NkM2MzMuNzggLTIyLjU2MzUgODA5LjM5NyAxLjI2ODMzIDg5Ny40NjMgMTcuNjEyN0MxMDQzLjM0IDQ1LjAxMjcgMTQzNC42OCA0NC43NTI3IDE1OTYuODQgODguMzA3QzE3NjguNDQgMTM0LjM2OCAxODIwLjk1IDE3My4yNzIgMTkyMCAyMTUuNDgzIiBzdHJva2U9IndoaXRlIiBzdHJva2Utb3BhY2l0eT0iMC4zIi8+Cjwvc3ZnPg==');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #d1d5db;
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+        }
+        .section-title {
+            color: #66c0f4;
+            font-weight: 600;
+            font-size: 1.125rem;
+            border-bottom: 1px solid #2a475e;
+            padding-bottom: 8px;
+            margin-top: 24px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        .patch-section-title {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.125rem; 
+            margin-top: 1.5rem; 
+            margin-bottom: 0.5rem; 
+        }
+        .patch-notes ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            padding-left: 0;
+            color: #c7d2e3; 
+        }
+        .patch-notes li {
+            margin-bottom: 0.25rem;
+        }
+        .fade-section {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            height: 200px; 
+        }
+        .fade-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to top, #202327, transparent);
+        }
+        .header {
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+            text-align: left;
+            transition: opacity 0.5s ease-out;
+            opacity: 1;
+            position: relative;
+            z-index: 10;
+        }
+        .header.fade-out {
+            opacity: 0;
+        }
+        .header-shadow-text {
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 0.5); 
+        }
+        #lang-toggle {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 9999;
+            background: linear-gradient(180deg,#2b6aa4,#1e4f78);
+            color: #fff;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 999px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 200ms ease, opacity 200ms ease;
+        }
+        #lang-toggle:hover { transform: translateY(-4px); }
+        #lang-toggle.small {
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+        }
+        .patch-notes a {
+            color: #66c0f4;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .patch-notes a:hover {
+            color: #8cc6f4;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="text-gray-300 antialiased">
+<div class="container mx-auto max-w-4xl p-4 md:p-8">
+    
+    <header class="header flex flex-col sm:flex-row justify-between sm:items-center -mx-4 md:-mx-8 px-4 md:px-8">
+        <h1 class="text-3xl font-black text-white mb-4 sm:mb-0 header-shadow-text" data-lang-ru="COUNTER-STRIKE 2 NEWS" data-lang-en="COUNTER-STRIKE 2 NEWS">COUNTER-STRIKE 2 NEWS</h1>
+    </header>
+
+    <article class="bg-[#202327] rounded-lg shadow-2xl mb-10 overflow-hidden">
+        
+        <div class="fade-section mb-6">
+            <img src="https://shared.fastly.steamstatic.com//store_item_assets/steam/apps/730/ss_fb8e5e2ae29ce64e2898315c66b5db08989e8f91.jpg?t=1749053861" 
+                alt="Update Banner Oct 24" 
+                class="w-full h-full rounded-t-lg object-cover object-top" 
+                data-lang-ru-alt="Баннер обновления 24 октября" 
+                data-lang-en-alt="Update Banner Oct 24">
+        </div>
+
+        <div class="p-6 md:p-10 pt-0">
+            <p id="timestamp-oct24" 
+               class="text-sm text-gray-500 mb-4" 
+               data-timestamp="2025-10-24T03:31:00+05:00"
+               data-lang-ru-prefix="ОПУБЛИКОВАНО " 
+               data-lang-en-prefix="PUBLISHED "
+               aria-live="polite">
+            </p>
+            
+            <h2 class="text-4xl font-bold text-white mb-6" data-lang-ru="Обновление Counter-Strike 2" data-lang-en="Counter-Strike 2 Update">Обновление Counter-Strike 2</h2>
+            
+            <div class="patch-notes text-gray-400">
+                
+                <h3 class="patch-section-title" data-lang-ru="[ ИГРОВОЙ ПРОЦЕСС ]" data-lang-en="[ GAMEPLAY ]">[ ИГРОВОЙ ПРОЦЕСС ]</h3>
+                <ul>
+                    <li data-lang-ru="Размер группы для подбора матчей в режиме «Зачистка» увеличен до четырёх игроков." data-lang-en="Party size for matchmaking in Retakes mode has been increased to four players.">Размер группы для подбора матчей в режиме «Зачистка» увеличен до четырёх игроков.</li>
+                    <li data-lang-ru="Решена проблема, из-за которой игроки, присоединившиеся к матчу в режиме «Зачистка» во время подготовки к раунду, могли появиться не в том месте." data-lang-en="Fixed an issue where players joining a Retakes match during round warmup could spawn in the wrong location.">Решена проблема, из-за которой игроки, присоединившиеся к матчу в режиме «Зачистка» во время подготовки к раунду, могли появиться не в том месте.</li>
+                    <li data-lang-ru="Исправлена логика менеджера ботов для освобождения места игрокам. Теперь в первую очередь выгоняются мёртвые боты и те, которыми не управляет человек." data-lang-en="Fixed bot manager logic for freeing player slots. Dead bots and bots not controlled by a human will now be kicked first.">Исправлена логика менеджера ботов для освобождения места игрокам. Теперь в первую очередь выгоняются мёртвые боты и те, которыми не управляет человек.</li>
+                </ul>
+                
+                <h3 class="patch-section-title" data-lang-ru="[ ПРОЧЕЕ ]" data-lang-en="[ MISC ]">[ ПРОЧЕЕ ]</h3>
+                <ul>
+                    <li data-lang-ru="Повышена стабильность." data-lang-en="Improved stability.">Повышена стабильность.</li>
+                </ul>
+                
+            </div>
+        </div>
+    </article>
+
+    <article class="bg-[#202327] rounded-lg shadow-2xl mb-10 overflow-hidden">
+        <div class="fade-section">
+            <img src="https://clan.fastly.steamstatic.com/images/3381077/1091410e14d2f6bf4543a56b6c2bb2c02222a58c.png" 
+                alt="Retakes Update Banner" 
+                class="w-full h-full rounded-t-lg object-cover object-top" 
+                data-lang-ru-alt="Retakes Update Banner" 
+                data-lang-en-alt="Retakes Update Banner">
+        </div>
+        <div class="p-6 md:p-10">
+            <p id="timestamp-oct23" 
+               class="text-sm text-gray-500 mb-3" 
+               data-timestamp="2025-10-23T03:59:00+05:00"
+               data-lang-ru-prefix="Опубликовано " 
+               data-lang-en-prefix="Published "
+               aria-live="polite">
+            </p>
+            <h2 class="text-4xl font-bold text-white mb-6" data-lang-ru="Режим «Зачистка» возвращается!" data-lang-en="Retakes Mode Returns!">Режим «Зачистка» возвращается!</h2>
+            <img src="https://clan.fastly.steamstatic.com/images/3381077/aae1ceb26e12464542579430a2436c8348461b5c.png" alt="Retakes Mode Screenshot" class="w-full rounded-lg mb-6 shadow-lg" data-lang-ru-alt="Retakes Mode Screenshot" data-lang-en-alt="Retakes Mode Screenshot">
+            <p class="text-lg text-gray-200 leading-relaxed" data-lang-ru="<strong>Бомба заложена — часики тикают. Зачистка возвращается!</strong><br><br>В этом классическом игровом режиме вас ждёт динамичная игра 4 на 3 после закладывания бомбы. Выбирайте карточку снаряжения в начале каждого раунда, проверяйте карту для координации с союзниками и грамотно задействуйте свои ресурсы, чтобы обезвредить (или защитить) заложенную бомбу.<br><br>Время поджимает, так чего же вы ждёте? Подключайтесь к зачистке!" data-lang-en="<strong>Bomb is planted — the clock is ticking. Retakes are back!</strong><br><br>In this classic game mode you’ll face a fast-paced 4v3 round after the bomb is planted. Pick a loadout card at the start of each round, check the radar to coordinate with your teammates, and use your resources wisely to defuse (or defend) the planted bomb.<br><br>The clock is ticking—what are you waiting for? Join Retakes now!"> <strong>Бомба заложена — часики тикают. Зачистка возвращается!</strong><br><br>
+                 В этом классическом игровом режиме вас ждёт динамичная игра 4 на 3 после закладывания бомбы. 
+                 Выбирайте карточку снаряжения в начале каждого раунда, проверяйте карту для координации с союзниками 
+                 и грамотно задействуйте свои ресурсы, чтобы обезвредить (или защитить) заложенную бомбу.<br><br>
+                 Время поджимает, так чего же вы ждёте? Подключайтесь к зачистке!
+            </p>
+        </div>
+    </article>
+    <main class="bg-[#202327] rounded-lg shadow-2xl overflow-hidden">
+        
+        <div class="fade-section mb-6">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/ss_796601d9d67faf53486eeb26d0724347cea67ddc.jpg?t=1749053861" 
+                alt="Previous Update Banner" 
+                class="w-full h-full rounded-t-lg object-cover object-top" 
+                data-lang-ru-alt="Previous Update Banner" 
+                data-lang-en-alt="Previous Update Banner">
+        </div>
+        
+        <div class="p-6 md:p-10 pt-0">
+            
+            <p class="text-sm text-gray-500 mb-4" data-lang-ru="Опубликовано чт, 23 октября 2025 г. в 4:00 +05" data-lang-en="Published Thu, October 23, 2025 at 4:00 +05">Опубликовано чт, 23 октября 2025 г. в 4:00 +05</p>
+            <h2 class="text-4xl font-bold text-white mb-6" data-lang-ru="Обновление Counter-Strike 2" data-lang-en="Counter-Strike 2 Update">Обновление Counter-Strike 2</h2>
+            <div class="patch-notes text-gray-400">
+                
+                <h3 class="patch-section-title" data-lang-ru="[ ИГРОВОЙ ПРОЦЕСС ]" data-lang-en="[ GAMEPLAY ]">[ ИГРОВОЙ ПРОЦЕСС ]</h3>
+                <ul>
+                    <li data-lang-ru="Режим «Зачистка» официально добавлен в игру. Он поддерживает карты разминирования из групп «Альфа» и «Дельта» на официальных серверах подбора матчей." data-lang-en="Retakes is officially added as an official game mode. It supports Defusal Group Alpha and Defusal Group Delta maps on official matchmaking servers.">Режим «Зачистка» официально добавлен в игру. Он поддерживает карты разминирования из групп «Альфа» и «Дельта» на официальных серверах подбора матчей.</li>
+                    <li data-lang-ru="Исправлена логика взаимодействия коктейля Молотова и действующих дымовых гранат в случае, когда последних несколько." data-lang-en="Fixed Molotov and active Smoke interaction logic in cases when multiple smokes are active in the map.">Исправлена логика взаимодействия коктейля Молотова и действующих дымовых гранат в случае, когда последних несколько.</li>
+                </ul>
+                <h3 class="patch-section-title" data-lang-ru="[ КАРТЫ ]" data-lang-en="[ MAPS ]">[ КАРТЫ ]</h3>
+                <ul>
+                    <li data-lang-ru="Golden обновлена до последней версии из мастерской (<a href='https://steamcommunity.com/sharedfiles/filedetails/changelog/3286163323?snr=1_2108_9__2107' target='_blank'>список изменений</a>)." data-lang-en="Updated Golden to the latest version from Steam Workshop (<a href='https://steamcommunity.com/sharedfiles/filedetails/changelog/3286163323?snr=1_2108_9__2107' target='_blank'>changelog</a>).">Golden обновлена до последней версии из мастерской (<a href='https://steamcommunity.com/sharedfiles/filedetails/changelog/3286163323?snr=1_2108_9__2107' target='_blank'>список изменений</a>).</li>
+                    <li data-lang-ru="Palacio обновлена до последней версии из мастерской (<a href='https://steamcommunity.com/sharedfiles/filedetails/changelog/3249860053?snr=1_2108_9__2107' target='_blank'>список изменений</a>)." data-lang-en="Updated Palacio to the latest version from Steam Workshop (<a href='https://steamcommunity.com/sharedfiles/filedetails/changelog/3249860053?snr=1_2108_9__2107' target='_blank'>changelog</a>).">Palacio обновлена до последней версии из мастерской (<a href='https://steamcommunity.com/sharedfiles/filedetails/changelog/3249860053?snr=1_2108_9__2107' target='_blank'>список изменений</a>).</li>
+                    <li data-lang-ru="Rooftop обновлена до последней версии из мастерской (<a href='https://steamcommunity.com/sharedfiles/filedetails/changelog/3536622725?snr=1_2108_9__2107' target='_blank'>список изменений</a>)." data-lang-en="Updated Rooftop to the latest version from Steam Workshop (<a href='https://steamcommunity.com/sharedfiles/filedetails/changelog/3536622725?snr=1_2108_9__2107' target='_blank'>changelog</a>).">Rooftop обновлена до последней версии из мастерской (<a href='https://steamcommunity.com/sharedfiles/filedetails/changelog/3536622725?snr=1_2108_9__2107' target='_blank'>список изменений</a>).</li>
+                </ul>
+                <h4 class="subsection-title patch-section-title text-base font-normal mt-4" data-lang-ru="Inferno" data-lang-en="Inferno">Inferno</h4>
+                <ul>
+                    <li data-lang-ru="Скорректировано пространство над крышей в «углу» и под балконом, чтобы улучшить видимость." data-lang-en="Adjusted space above the roof in 'quad' and under 'balcony' to improve visibility.">Скорректировано пространство над крышей в «углу» и под балконом, чтобы улучшить видимость.</li>
+                    <li data-lang-ru="Внесены различные улучшения оптимизации." data-lang-en="Various optimization improvements introduced.">Внесены различные улучшения оптимизации.</li>
+                </ul>
+                <h3 class="patch-section-title" data-lang-ru="[ КОНТРАКТЫ ]" data-lang-en="[ CONTRACTS ]">[ КОНТРАКТЫ ]</h3>
+                <ul>
+                    <li data-lang-ru="Расширены возможности контракта обмена. Теперь в нем можно задействовать пять предметов тайного качества:" data-lang-en="Extended functionality of the 'Trade Up Contract'. Now it allows exchanging five Covert quality items:">Расширены возможности контракта обмена. Теперь в нем можно задействовать пять предметов тайного качества:</li>
+                    
+                    <ul class="mt-2 ml-4 list-disc">
+                        <li data-lang-ru="Пять тайных предметов со счетчиком StatTrak™ можно обменять на нож или перчатки из коллекции одного из предоставленных предметов — также со счетчиком StatTrak™." data-lang-en="Five StatTrak™ Covert items can be exchanged for one StatTrak™ Knife or Gloves item from a collection of one of the items provided.">Пять тайных предметов со счетчиком StatTrak™ можно обменять на нож или перчатки из коллекции одного из предоставленных предметов — также со счетчиком StatTrak™.</li>
+                        <li data-lang-ru="Пять обычных тайных предметов можно обменять на обычный нож или перчатки из коллекции одного из предоставленных предметов." data-lang-en="Five regular Covert items can be exchanged for one regular Knife item or one regular Gloves item from a collection of one of the items provided.">Пять обычных тайных предметов можно обменять на обычный нож или перчатки из коллекции одного из предоставленных предметов.</li>
+                    </ul>
+                </ul>
+                <h3 class="patch-section-title" data-lang-ru="[ ПРОЧЕЕ ]" data-lang-en="[ MISC ]">[ ПРОЧЕЕ ]</h3>
+                <ul>
+                    <li data-lang-ru="Оптимизирована производительность в главном меню и в интерфейсе осмотра предметов." data-lang-en="Performance optimized in the main menu and item inspect UI.">Оптимизирована производительность в главном меню и в интерфейсе осмотра предметов.</li>
+                    <li data-lang-ru="Решена проблема, из-за которой иконки предметов в инвентаре иногда были размытыми или не отображались." data-lang-en="Fixed inventory item icons sometimes rendering in blurry state or not rendering.">Решена проблема, из-за которой иконки предметов в инвентаре иногда были размытыми или не отображались.</li>
+                    <li data-lang-ru="Решена проблема, из-за которой звуковые события, активируемые только с сервера, запускались по нескольку раз." data-lang-en="Fixed several server-only sound events starting multiple times.">Решена проблема, из-за которой звуковые события, активируемые только с сервера, запускались по нескольку раз.</li>
+                    <li data-lang-ru="Повышена стабильность." data-lang-en="Stability improved.">Повышена стабильность.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center text-gray-500 text-sm mt-8" data-lang-ru="CS2News. All rights reserved." data-lang-en="CS2News. All rights reserved.">CS2News. All rights reserved.</footer>
+</div>
+<button id="lang-toggle" aria-label="Переключить язык">EN</button>
+<script>
+    let currentLang = localStorage.getItem('cs2_lang') || 'ru';
+    const translatableElements = document.querySelectorAll('[data-lang-ru]');
+    const langToggleButton = document.getElementById('lang-toggle');
+    const toggleLabels = { ru: 'EN', en: 'RU' };
+
+    function formatTimestamp(lang, timestampStr) {
+        try {
+            const date = new Date(timestampStr);
+            const locale = lang === 'ru' ? 'ru-RU' : 'en-US';
+            
+            const options = {
+                weekday: 'short',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                timeZoneName: 'short'
+            };
+            
+            return date.toLocaleString(locale, options);
+        } catch (e) {
+            console.error("Error formatting date:", e);
+            return "Invalid Date"; 
+        }
+    }
+
+    function setLanguage(lang) {
+        translatableElements.forEach(el => {
+            const text = el.getAttribute(`data-lang-${lang}`);
+            if (text !== null) {
+                if (text.includes('<') && text.includes('>')) {
+                    el.innerHTML = text;
+                } else {
+                    el.textContent = text;
+                }
+            }
+            const altText = el.getAttribute(`data-lang-${lang}-alt`);
+            if (altText !== null) {
+                el.alt = altText;
+            }
+        });
+
+        const tsOct24 = document.getElementById('timestamp-oct24');
+        if (tsOct24) {
+            const prefix24 = tsOct24.getAttribute(`data-lang-${lang}-prefix`) || '';
+            const date24 = formatTimestamp(lang, tsOct24.getAttribute('data-timestamp'));
+            tsOct24.textContent = (prefix24 + date24).toUpperCase();
+        }
+
+        const tsOct23 = document.getElementById('timestamp-oct23');
+        if (tsOct23) {
+            const prefix23 = tsOct23.getAttribute(`data-lang-${lang}-prefix`) || '';
+            const date23 = formatTimestamp(lang, tsOct23.getAttribute('data-timestamp'));
+            tsOct23.textContent = prefix23 + date23;
+        }
+
+        langToggleButton.textContent = toggleLabels[lang];
+        langToggleButton.classList.toggle('small', true);
+        localStorage.setItem('cs2_lang', lang);
+        document.documentElement.lang = (lang === 'ru') ? 'ru' : 'en';
+    }
+
+    langToggleButton.addEventListener('click', () => {
+        currentLang = (currentLang === 'ru') ? 'en' : 'ru';
+        setLanguage(currentLang);
+    });
+
+    setLanguage(currentLang);
+
+    const header = document.querySelector('.header');
+    
+    window.addEventListener('scroll', () => {
+        if (header) { 
+            const headerHeight = header.offsetHeight;
+            if (headerHeight > 0) {
+                const scrollTop = window.scrollY;
+                if (scrollTop < headerHeight) {
+                    const opacity = 1 - (scrollTop / headerHeight);
+                    header.style.opacity = opacity;
+                } else {
+                    header.style.opacity = 0;
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
