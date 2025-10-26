@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
+:root{ --logo-height:48px; }
+.site-logo{ height:var(--logo-height); width:auto; display:block; }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #1b2838;
@@ -80,7 +83,7 @@
             opacity: 0;
         }
         .header-shadow-text {
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 0.5); 
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
         #lang-toggle {
@@ -135,16 +138,77 @@
             color: #8cc6f4;
             text-decoration: underline;
         }
+        
+        .topographic-pattern {
+            background-color: #000000;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23333' fill-opacity='0.4'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-4c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM91 88c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 66c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM79 15c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .search-highlight {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 1px 3px;
+            color: #a0e0ff;
+            font-weight: bold;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        
+        .search-highlight-block {
+            background-color: #181a1d;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 8px;
+            margin: 8px 0;
+            box-shadow: 0 0 8px rgba(0,0,0,0.3);
+        }
+
+        .search-highlight-block li,
+        .search-highlight-block p {
+            color: #8cc6f4;
+        }
+
+        .search-highlight-block h2,
+        .search-highlight-block h3,
+        .search-highlight-block h4 {
+            color: #ffffff !important;
+        }
+
+        .search-highlight-block .search-highlight {
+            color: #a0e0ff;
+        }
+
+        /* Fix size and centering for search icon */
+:root{ --logo-height: 48px; }
+.site-logo{ height: var(--logo-height); width: auto; display: block; }
+
+
+        
+
     </style>
 </head>
 <body class="text-gray-300 antialiased">
 <div class="container mx-auto max-w-4xl p-4 md:p-8">
     
     <header class="header flex flex-col sm:flex-row justify-between sm:items-center -mx-4 md:-mx-8 px-4 md:px-8">
-        <h1 class="text-3xl font-black text-white mb-4 sm:mb-0 header-shadow-text" data-lang-ru="COUNTER-STRIKE 2 NEWS" data-lang-en="COUNTER-STRIKE 2 NEWS">COUNTER-STRIKE 2 NEWS</h1>
+        <img id="siteLogo" src="Logo.png" alt="Logo" class="site-logo">
+        
+        <div class="relative w-full sm:w-64">
+            <input type="text" id="searchInput" 
+                   class="w-full bg-[#181a1d] text-gray-300 border border-gray-700 rounded-full py-2 pl-4 pr-12 focus:outline-none focus:border-blue-500 transition-colors" 
+                   placeholder="Поиск по обновлениям..."
+                   data-lang-ru-placeholder="Поиск по обновлениям..."
+                   data-lang-en-placeholder="Search updates...">
+            
+        </div>
+
     </header>
 
-    <article class="bg-[#202327] rounded-lg shadow-2xl mb-10 overflow-hidden">
+    <div id="noResultsMessage" class="hidden text-center text-white-459 text-lg py-10" data-lang-ru="Ничего не найдено." data-lang-en="No results found.">
+        Ничего не найдено.
+    </div>
+
+    <article class="searchable-article bg-[#202327] rounded-lg shadow-2xl mb-10 overflow-hidden">
         
         <div class="fade-section mb-6">
             <img src="https://shared.fastly.steamstatic.com//store_item_assets/steam/apps/730/ss_fb8e5e2ae29ce64e2898315c66b5db08989e8f91.jpg?t=1749053861" 
@@ -183,7 +247,7 @@
         </div>
     </article>
 
-    <article class="bg-[#202327] rounded-lg shadow-2xl mb-10 overflow-hidden">
+    <article class="searchable-article bg-[#202327] rounded-lg shadow-2xl mb-10 overflow-hidden">
         <div class="fade-section">
             <img src="https://clan.fastly.steamstatic.com/images/3381077/1091410e14d2f6bf4543a56b6c2bb2c02222a58c.png" 
                 alt="Retakes Update Banner" 
@@ -209,7 +273,7 @@
             </p>
         </div>
     </article>
-    <main class="bg-[#202327] rounded-lg shadow-2xl overflow-hidden">
+    <main class="searchable-article bg-[#202327] rounded-lg shadow-2xl overflow-hidden">
         
         <div class="fade-section mb-6">
             <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/ss_796601d9d67faf53486eeb26d0724347cea67ddc.jpg?t=1749053861" 
@@ -238,7 +302,7 @@
                 </ul>
                 <h4 class="subsection-title patch-section-title text-base font-normal mt-4" data-lang-ru="Inferno" data-lang-en="Inferno">Inferno</h4>
                 <ul>
-                    <li data-lang-ru="Скорректировано пространство над крышей в «углу» и под балконом, чтобы улучшить видимость." data-lang-en="Adjusted space above the roof in 'quad' and under 'balcony' to improve visibility.">Скорректировано пространство над крышей в «углу» и под балконом, чтобы улучшить видимость.</li>
+                    <li data-lang-ru="Скорректировано пространство над крышей в «углу» и под балконом, чтобы улучшить видимость." data-lang-en="Adjusted space above the roof in 'quad' and under 'balcony' to improve visibility."">Скорректировано пространство над крышей в «углу» и под балконом, чтобы улучшить видимость.</li>
                     <li data-lang-ru="Внесены различные улучшения оптимизации." data-lang-en="Various optimization improvements introduced.">Внесены различные улучшения оптимизации.</li>
                 </ul>
                 <h3 class="patch-section-title" data-lang-ru="[ КОНТРАКТЫ ]" data-lang-en="[ CONTRACTS ]">[ КОНТРАКТЫ ]</h3>
@@ -265,6 +329,19 @@
 <button id="lang-toggle" aria-label="Переключить язык">EN</button>
 <script>
     let currentLang = localStorage.getItem('cs2_lang') || 'ru';
+(function(){
+  const LOGO_SIZE_PX = 85;
+  function applyLogoSize(){
+    document.documentElement.style.setProperty('--logo-height', LOGO_SIZE_PX + 'px');
+    const el = document.getElementById('siteLogo');
+    if (el) el.style.height = LOGO_SIZE_PX + 'px';
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyLogoSize);
+  } else {
+    applyLogoSize();
+  }
+})();
     const translatableElements = document.querySelectorAll('[data-lang-ru]');
     const langToggleButton = document.getElementById('lang-toggle');
     const toggleLabels = { ru: 'EN', en: 'RU' };
@@ -305,6 +382,10 @@
             if (altText !== null) {
                 el.alt = altText;
             }
+            const labelText = el.getAttribute(`data-lang-${lang}-label`);
+            if (labelText !== null) {
+                el.setAttribute('aria-label', labelText);
+            }
         });
 
         const tsOct24 = document.getElementById('timestamp-oct24');
@@ -321,6 +402,14 @@
             tsOct23.textContent = prefix23 + date23;
         }
 
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            const placeholder = searchInput.getAttribute(`data-lang-${lang}-placeholder`);
+            if (placeholder) {
+                searchInput.placeholder = placeholder;
+            }
+        }
+
         langToggleButton.textContent = toggleLabels[lang];
         langToggleButton.classList.toggle('small', true);
         localStorage.setItem('cs2_lang', lang);
@@ -333,6 +422,134 @@
     });
 
     setLanguage(currentLang);
+
+    const searchInput = document.getElementById('searchInput');
+    const articles = Array.from(document.querySelectorAll('.searchable-article'));
+    const noResultsMessage = document.getElementById('noResultsMessage');
+
+    const articlesWithSearchIndex = articles.map(article => {
+        let searchIndex = article.textContent.toLowerCase();
+        article.querySelectorAll('[data-lang-ru]').forEach(el => {
+            searchIndex += ' ' + (el.dataset.langRu || '').toLowerCase();
+        });
+        article.querySelectorAll('[data-lang-en]').forEach(el => {
+            searchIndex += ' ' + (el.dataset.langEn || '').toLowerCase();
+        });
+        article.querySelectorAll('img[data-lang-ru-alt]').forEach(el => {
+             searchIndex += ' ' + (el.dataset.langRuAlt || '').toLowerCase();
+             searchIndex += ' ' + (el.dataset.langEnAlt || '').toLowerCase();
+        });
+        searchIndex = searchIndex.replace(/\s+/g, ' ').trim();
+        return { element: article, searchIndex: searchIndex };
+    });
+
+    function clearHighlights() {
+        articles.forEach(article => {
+            const highlights = article.querySelectorAll('mark.search-highlight');
+            highlights.forEach(mark => {
+                const parent = mark.parentNode;
+                if (parent) {
+                    parent.replaceChild(document.createTextNode(mark.textContent), mark);
+                    parent.normalize();
+                }
+            });
+            const highlightedBlocks = article.querySelectorAll('.search-highlight-block');
+            highlightedBlocks.forEach(block => {
+                block.classList.remove('search-highlight-block');
+            });
+        });
+    }
+
+    function highlightTextAndBlocks(node, query) {
+        if (!query) return;
+        const regex = new RegExp(query, 'gi');
+        let matchFoundInNode = false;
+
+        if (node.nodeType === 3) {
+            const text = node.textContent;
+            if (text.match(regex)) {
+                matchFoundInNode = true;
+                const fragment = document.createDocumentFragment();
+                let lastIndex = 0;
+                
+                text.replace(regex, (match, offset) => {
+                    fragment.appendChild(document.createTextNode(text.substring(lastIndex, offset)));
+                    const mark = document.createElement('mark');
+                    mark.className = 'search-highlight';
+                    mark.textContent = match;
+                    fragment.appendChild(mark);
+                    lastIndex = offset + match.length;
+                });
+                
+                fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+                node.parentNode.replaceChild(fragment, node);
+            }
+        } else if (node.nodeType === 1 && node.nodeName !== 'SCRIPT' && node.nodeName !== 'STYLE' && node.className.indexOf('search-highlight') === -1) {
+            Array.from(node.childNodes).forEach(child => {
+                if (highlightTextAndBlocks(child, query)) {
+                    matchFoundInNode = true;
+                }
+            });
+        }
+
+        if (matchFoundInNode && node.nodeType === 1) {
+            const tagName = node.tagName.toLowerCase();
+            if (tagName === 'li' || tagName === 'p' || tagName === 'h2') {
+                node.classList.add('search-highlight-block');
+            } else if (tagName === 'h4') {
+                node.classList.add('search-highlight-block');
+                const nextEl = node.nextElementSibling;
+                if (nextEl && nextEl.tagName.toLowerCase() === 'ul') {
+                    nextEl.classList.add('search-highlight-block');
+                }
+            } else if (tagName === 'h3') {
+                 node.classList.add('search-highlight-block');
+                 const nextEl = node.nextElementSibling;
+                 if (nextEl && nextEl.tagName.toLowerCase() === 'ul') {
+                    nextEl.classList.add('search-highlight-block');
+                 }
+            }
+        }
+        
+        return matchFoundInNode;
+    }
+
+
+    function performSearch() {
+        const query = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+        const footerEl = document.querySelector('footer');
+
+        clearHighlights();
+
+        articlesWithSearchIndex.forEach(item => {
+            const isMatch = (query === '') ? true : item.searchIndex.includes(query);
+            
+            if (isMatch) {
+                item.element.style.display = 'block';
+                visibleCount++;
+                
+                if (query) {
+                    highlightTextAndBlocks(item.element, query);
+                }
+            } else {
+                item.element.style.display = 'none';
+            }
+        });
+        
+        noResultsMessage.style.display = (visibleCount === 0 && query !== '') ? 'block' : 'none';
+        if (footerEl) footerEl.style.display = (query !== '') ? 'none' : '';
+    }
+
+    if (searchInput && articles.length > 0 && noResultsMessage) {
+        searchInput.addEventListener('input', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+    }
 
     const header = document.querySelector('.header');
     
