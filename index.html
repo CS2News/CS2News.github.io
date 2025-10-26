@@ -82,23 +82,12 @@
         .header-shadow-text {
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 0.5); 
         }
+
         #lang-toggle {
             position: fixed;
             right: 18px;
             bottom: 18px;
             z-index: 9999;
-            background: linear-gradient(180deg,#2b6aa4,#1e4f78);
-            color: #fff;
-            border: none;
-            padding: 10px 14px;
-            border-radius: 999px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 200ms ease, opacity 200ms ease;
-        }
-        #lang-toggle:hover { transform: translateY(-4px); }
-        #lang-toggle.small {
             width: 44px;
             height: 44px;
             padding: 0;
@@ -107,7 +96,36 @@
             align-items: center;
             justify-content: center;
             font-size: 13px;
+            background: linear-gradient(180deg, #2b6aa4, #1e4f78);
+            color: #e5e5e5;
+            border: 1px solid #3a89d1;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            transition: all 200ms ease-out;
         }
+
+        #lang-toggle:hover {
+            background: linear-gradient(180deg, #3a89d1, #2c73a8);
+            border-color: #66c0f4;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 16px rgba(0, 0, 0, 0.45);
+        }
+        
+        #lang-toggle:active {
+            background: linear-gradient(180deg, #1e4f78, #2b6aa4);
+            border-color: #2b6aa4;
+            transform: translateY(0px) scale(0.95);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            transition-duration: 100ms;
+        }
+
+        #lang-toggle.small {
+        }
+        
         .patch-notes a {
             color: #66c0f4;
             text-decoration: none;
@@ -183,7 +201,7 @@
             </p>
             <h2 class="text-4xl font-bold text-white mb-6" data-lang-ru="Режим «Зачистка» возвращается!" data-lang-en="Retakes Mode Returns!">Режим «Зачистка» возвращается!</h2>
             <img src="https://clan.fastly.steamstatic.com/images/3381077/aae1ceb26e12464542579430a2436c8348461b5c.png" alt="Retakes Mode Screenshot" class="w-full rounded-lg mb-6 shadow-lg" data-lang-ru-alt="Retakes Mode Screenshot" data-lang-en-alt="Retakes Mode Screenshot">
-            <p class="text-lg text-gray-200 leading-relaxed" data-lang-ru="<strong>Бомба заложена — часики тикают. Зачистка возвращается!</strong><br><br>В этом классическом игровом режиме вас ждёт динамичная игра 4 на 3 после закладывания бомбы. Выбирайте карточку снаряжения в начале каждого раунда, проверяйте карту для координации с союзниками и грамотно задействуйте свои ресурсы, чтобы обезвредить (или защитить) заложенную бомбу.<br><br>Время поджимает, так чего же вы ждёте? Подключайтесь к зачистке!" data-lang-en="<strong>Bomb is planted — the clock is ticking. Retakes are back!</strong><br><br>In this classic game mode you’ll face a fast-paced 4v3 round after the bomb is planted. Pick a loadout card at the start of each round, check the radar to coordinate with your teammates, and use your resources wisely to defuse (or defend) the planted bomb.<br><br>The clock is ticking—what are you waiting for? Join Retakes now!"> <strong>Бомба заложена — часики тикают. Зачистка возвращается!</strong><br><br>
+            <p class="text-lg text-gray-200 leading-relaxed" data-lang-ru="<strong>Бомба заложена — часики тикают. Зачистка возвращается!</strong><br><br>В этом классическом игровом режиме вас ждёт динамичная игра 4 на 3 после закладывания бомбы. Выбирайте карточку снаряжения в начале каждого раунда, проверяйте карту для координации с союзниками и грамотно задействуйте свои ресурсы, чтобы обезвредить (или защитить) заложенную бомбу.<br><br>Время поджимает, так чего же вы ждёте? Подключайтесь к зачистке!" data-lang-en="<strong>Bomb is planted — the clock is ticking. Retakes are back!</strong><br><br>In this classic game mode you'll face a fast-paced 4v3 round after the bomb is planted. Pick a loadout card at the start of each round, check the radar to coordinate with your teammates, and use your resources wisely to defuse (or defend) the planted bomb.<br><br>The clock is ticking—what are you waiting for? Join Retakes now!"> <strong>Бомба заложена — часики тикают. Зачистка возвращается!</strong><br><br>
                  В этом классическом игровом режиме вас ждёт динамичная игра 4 на 3 после закладывания бомбы. 
                  Выбирайте карточку снаряжения в начале каждого раунда, проверяйте карту для координации с союзниками 
                  и грамотно задействуйте свои ресурсы, чтобы обезвредить (или защитить) заложенную бомбу.<br><br>
