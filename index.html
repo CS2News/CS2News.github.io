@@ -210,6 +210,47 @@
     <article class="searchable-article bg-[#202327] rounded-lg shadow-2xl mb-10 overflow-hidden">
         
         <div class="fade-section mb-6">
+            <img src="https://shared.akamai.steamstatic.com//store_item_assets/steam/apps/730/ss_2254a50f27951fb9028bc00b93a7f2ed7aac1e13.jpg?t=1749053861" 
+                alt="Update Banner Oct 30" 
+                class="w-full h-full rounded-t-lg object-cover object-top" 
+                data-lang-ru-alt="Баннер обновления 30 октября" 
+                data-lang-en-alt="Update Banner Oct 30">
+        </div>
+
+        <div class="p-6 md:p-10 pt-0">
+            <p id="timestamp-oct30" 
+               class="text-sm text-gray-500 mb-4" 
+               data-timestamp="2025-10-30T04:36:00+05:00"
+               data-lang-ru-prefix="ОПУБЛИКОВАНО " 
+               data-lang-en-prefix="PUBLISHED "
+               aria-live="polite">
+            </p>
+            
+            <h2 class="text-4xl font-bold text-white mb-6" data-lang-ru="Обновление Counter-Strike 2" data-lang-en="Counter-Strike 2 Update">Обновление Counter-Strike 2</h2>
+            
+            <div class="patch-notes text-gray-400">
+                
+                <h3 class="patch-section-title" data-lang-ru="[ ПРОЧЕЕ ]" data-lang-en="[ MISC ]">[ ПРОЧЕЕ ]</h3>
+                <ul>
+                    <li data-lang-ru="Улучшено предсказание движения игрока при столкновении с другими движущимися игроками." data-lang-en="Improved player movement prediction when colliding with other moving players.">Улучшено предсказание движения игрока при столкновении с другими движущимися игроками.</li>
+                    <li data-lang-ru="Добавлено предсказание звука входа/выхода из прицела, который теперь немедленно воспроизводится для локального игрока." data-lang-en="Added scope in/out sound prediction to play immediately for local player.">Добавлено предсказание звука входа/выхода из прицела, который теперь немедленно воспроизводится для локального игрока.</li>
+                    <li data-lang-ru="Карточки снаряжения в режиме «Зачистка» теперь будут случайным образом предлагать M4A1-S или M4A4, если у игрока в снаряжении CT экипированы оба варианта." data-lang-en="Retake loadout cards will now randomly offer M4A1-S or M4A4 if player has both equipped in their CT loadout.">Карточки снаряжения в режиме «Зачистка» теперь будут случайным образом предлагать M4A1-S или M4A4, если у игрока в снаряжении CT экипированы оба варианта.</li>
+                    <li data-lang-ru="Добавлен бронежилет на карточки «4 на 3», «Осталось 4 плохих парня» и «Огонь вслепую»." data-lang-en="Added Body Armor to 4v3, 4 Bad Guys Left, and Blind Fire cards.">Добавлен бронежилет на карточки «4 на 3», «Осталось 4 плохих парня» и «Огонь вслепую».</li>
+                    <li data-lang-ru="Добавлены Dual Berettas на карточку «Огонь вслепую» за T." data-lang-en="Added Dual Berettas to T Blind Fire card.">Добавлены Dual Berettas на карточку «Огонь вслепую» за T.</li>
+                    <li data-lang-ru="Заменена светошумовая граната на осколочную (HE Grenade) на карточке снаряжения противника за CT." data-lang-en="Replaced Flashbang with HE Grenade on CT Enemy Loadout Card">Заменена светошумовая граната на осколочную (HE Grenade) на карточке снаряжения противника за CT.</li>
+                    <li data-lang-ru="Исправлены анимации бездействия для CZ75-Auto, SSG 08, AUG, Galil AR." data-lang-en="Fixed idle animations on CZ75-Auto, SSG 08, AUG, Galil AR.">Исправлены анимации бездействия для CZ75-Auto, SSG 08, AUG, Galil AR.</li>
+                    <li data-lang-ru="Улучшения производительности." data-lang-en="Performance improvements.">Улучшения производительности.</li>
+                    <li data-lang-ru="Улучшения стабильности." data-lang-en="Stability improvements.">Улучшения стабильности.</li>
+                    <li data-lang-ru="Улучшена достоверность анимаций при воспроизведении демо-записей." data-lang-en="Improvements to animation fidelity during demo playback.">Улучшена достоверность анимаций при воспроизведении демо-записей.</li>
+                </ul>
+                
+            </div>
+        </div>
+    </article>
+
+    <article class="searchable-article bg-[#202327] rounded-lg shadow-2xl mb-10 overflow-hidden">
+        
+        <div class="fade-section mb-6">
             <img src="https://shared.fastly.steamstatic.com//store_item_assets/steam/apps/730/ss_fb8e5e2ae29ce64e2898315c66b5db08989e8f91.jpg?t=1749053861" 
                 alt="Update Banner Oct 24" 
                 class="w-full h-full rounded-t-lg object-cover object-top" 
@@ -390,6 +431,13 @@
             }
         });
 
+        const tsOct30 = document.getElementById('timestamp-oct30');
+        if (tsOct30) {
+            const prefix30 = tsOct30.getAttribute(`data-lang-${lang}-prefix`) || '';
+            const date30 = formatTimestamp(lang, tsOct30.getAttribute('data-timestamp'));
+            tsOct30.textContent = (prefix30 + date30).toUpperCase();
+        }
+        
         const tsOct24 = document.getElementById('timestamp-oct24');
         if (tsOct24) {
             const prefix24 = tsOct24.getAttribute(`data-lang-${lang}-prefix`) || '';
